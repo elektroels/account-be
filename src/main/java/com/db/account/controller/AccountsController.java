@@ -18,6 +18,7 @@ public class AccountsController {
 
     @GetMapping("")
     public ResponseEntity<List<Account>> getAccounts() {
+        // TODO: Remove hardcoded
         var accounts = accountService.getAccounts(1);
         return ResponseEntity.ok(accounts);
     }
