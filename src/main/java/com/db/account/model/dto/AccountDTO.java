@@ -1,4 +1,4 @@
-package com.db.account.model;
+package com.db.account.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

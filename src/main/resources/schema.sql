@@ -22,16 +22,13 @@ INSERT INTO accounts (customer_id, account_name, balance) values
 (1, 'savings', 300);
 
 INSERT INTO transactions (account_id, amount) VALUES 
+(1, 0),
 (1, 100),
 (1, -100),
-(1, 100);
-
-/*
-(1, -100),
 (1, 100),
+(2, 0),
 (2, 50),
 (2, 100),
 (2, 3000),
 (2, -3150),
 (2, 300);
-*/
