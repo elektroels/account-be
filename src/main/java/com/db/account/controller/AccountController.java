@@ -21,18 +21,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/account")
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class AccountController {
 
     private final AccountService accountService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("")
     public ResponseEntity<List<Account>> addAccount(@RequestBody AccountDTO account) {
         var accounts = accountService.addAccount(account);
         return ResponseEntity.ok(accounts);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/{accountId}/transactions")
     public ResponseEntity<List<Transaction>> getAccountTransactions(
         @PathVariable("accountId")  int accountId,
