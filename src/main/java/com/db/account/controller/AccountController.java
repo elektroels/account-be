@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,12 +25,14 @@ public class AccountController {
 
     private final AccountService accountService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("")
     public ResponseEntity<List<Account>> addAccount(@RequestBody AccountDTO account) {
         var accounts = accountService.addAccount(account);
         return ResponseEntity.ok(accounts);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/{accountId}/transactions")
     public ResponseEntity<List<Transaction>> getAccountTransactions(
         @PathVariable("accountId")  int accountId,
