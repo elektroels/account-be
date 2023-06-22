@@ -39,8 +39,6 @@ public class AccountController {
         @RequestParam(required = false) @DateTimeFormat(pattern="yyyy-MM-dd") Date to
     ) {
         if (from != null && to != null) {
-            System.out.println(from);
-            System.out.println(to);
             var transactions = accountService.getTransactionsPeriod(accountId, from, to);
             return ResponseEntity.ok(transactions);
         }

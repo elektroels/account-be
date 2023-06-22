@@ -38,7 +38,7 @@ public class AccountDAO {
 
     public List<Transaction> getTransactions(int accountId) {
         return jdbc.query(
-            "SELECT id, account_id, amount, timeof FROM transactions WHERE account_id = ?", 
+            "SELECT id, account_id, amount, timeof FROM transactions WHERE account_id = ? order by timeof desc", 
             (rs, rowNum) -> new Transaction(
                 rs.getInt("id"),
                 rs.getInt("account_id"),
@@ -51,7 +51,7 @@ public class AccountDAO {
 
     public List<Transaction> getTransactionsPeriod(int accountId, Timestamp from, Timestamp to) {
         return jdbc.query(
-            "SELECT id, account_id, amount, timeof FROM transactions WHERE account_id = ? AND timeof > ? AND timeof < ?", 
+            "SELECT id, account_id, amount, timeof FROM transactions WHERE account_id = ? AND timeof > ? AND timeof < ? order by timeof desc", 
             (rs, rowNum) -> new Transaction(
                 rs.getInt("id"),
                 rs.getInt("account_id"),
