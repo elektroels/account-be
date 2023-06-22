@@ -2,6 +2,8 @@ package com.db.account.controller;
 
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,7 +41,8 @@ public class AccountController {
         @RequestParam(required = false) @DateTimeFormat(pattern="yyyy-MM-dd") Date to
     ) {
         if (from != null && to != null) {
-            var transactions = accountService.getTransactionsPeriod(accountId, from, to);
+            var _to = DateUtils.addDays(to, 1);
+            var transactions = accountService.getTransactionsPeriod(accountId, from, _to);
             return ResponseEntity.ok(transactions);
         }
 
